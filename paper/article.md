@@ -24,7 +24,7 @@ affiliations:
  - name: INSERM U1219, Université de Bordeaux, France
    index: 3
 date: 7 July 2025
-bibliography: paper.bib
+bibliography: refs.bib
 ---
 
 
