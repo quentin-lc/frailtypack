@@ -9,13 +9,13 @@ authors:
   - name: Quentin Le Coent
     equal-contrib: true
     corresponding: true 
-    affiliation: 1
+    affiliation: '1'
   - name: Catherine Legrand
     equal-contrib: true 
-    affiliation: 2
+    affiliation: '2'
   - name: Virginie Rondeau
     equal-contrib: true 
-    affiliation: 3
+    affiliation: '3'
 affiliations:
  - name: Johns Hopkins University, USA
    index: 1
