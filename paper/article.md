@@ -1,10 +1,29 @@
----
-author:
-- Quentin Le Coent^[Johns Hopkins University, USA, qlecoen1@jh.edu]
-- Catherine Legrand^[Université Catholique de Louvain, Belgium]
-- Virginie Rondeau^[INSERM U1219, Université de Bordeaux, France]
-bibliography: refs.bib
-title: Surrogate endpoint validation using the R package frailtypack
+title: 'Surrogate endpoint validation using the R package frailtypack'
+tags:
+  - R
+  - Fortran
+  - Survival analysis
+  - Surrogacy
+authors:
+  - name: Quentin Le Coent
+    equal-contrib: true
+    corresponding: true 
+    affiliation: 1
+  - name: Catherine Legrand
+    equal-contrib: true 
+    affiliation: 2
+  - name: Virginie Rondeau
+    equal-contrib: true 
+    affiliation: 3
+affiliations:
+ - name: Johns Hopkins University, USA
+   index: 1
+ - name: Université Catholique de Louvain, Belgium
+   index: 2
+ - name: INSERM U1219, Université de Bordeaux, France
+   index: 3
+date: 7 July 2025
+bibliography: paper.bib
 ---
 
 
