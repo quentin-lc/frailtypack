@@ -1,24 +1,6 @@
 require(frailtypack) #requires frailtypack version >=3.6.4
 
-
 #1st illustration
-
-data("dataOvarian",package = "frailtypack")
-
-head(dataOvarian)
-
-##Model fitting
-mod.ovar <- jointSurroPenal(data = dataOvarian, n.knots = 8,
-                            indicator.alpha = 0,
-                            nb.mc = 500, scale = 1/365)
-
-
-##Results
-mod.ovar
-plot(mod.ovar, pos.legend = "topleft")
-
-
-#2nd illustration
 
 data(gastadj)
 gastadj$timeS<-gastadj$timeS/365
@@ -45,7 +27,7 @@ mod.gast<-jointSurroPenal(subset,n.knots = 4,
 summary(mod.gast)
 plot(mod.gast,type.plot="Hazard",plot.mediation="All")
 
-#3rd illustration
+#2nd illustration
 data(colorectal)
 data(colorectalLongi)
 
