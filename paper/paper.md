@@ -33,7 +33,7 @@ In this article we present two functions of the `frailtypack`
 package for investigating surrogate endpoints through mediation analysis. 
 A detailed explanation of these functions can be found in the reference manual of
 the package available in R or on the CRAN [@frailtypackcite]. 
-Results produces in this article
+Results in this article were obtained
 used `frailtypack` version 3.6.5 and R version 4.4.0.
 
 # Function jointSurroPenal
@@ -64,8 +64,8 @@ The call to this function is as follows,
     +          pte.boot.nmc=500, pte.integ.type=2)
 :::
 
-In order to use this function, the user has to provide a dataset
-(argument `data`) of the following structure:
+In order to use this function, the user must provide a dataset
+(argument `data`) with the following structure:
 
 ::: small
     R> head(data)
@@ -82,7 +82,7 @@ In order to use this function, the user has to provide a dataset
 
 The dataset must contain one line per subject and seven columns: one for
 the subject's identification number (column `patientID`), for the trial
-number (`trialID`), treatment indicator (`trt`)as well as one for the
+number (`trialID`), treatment indicator (`trt`), for the
 follow-up time for the surrogate (`timeS`) and censoring indicator
 (`statusS`) and for the follow-up time for the final endpoint (`timeT`)
 and censoring indicator (`statusT`).
@@ -90,13 +90,12 @@ and censoring indicator (`statusT`).
 
 The option to investigate surrogacy through mediation analysis
 is given by setting the argument `mediation` to
-`TRUE`. In that case a function $\gamma(S)$ is estimated using a basis
+`TRUE`. In that case, a function $\gamma(S)$ is estimated using a basis
 of B-splines whose number of knots is given by the argument `g.nknots`,
-which can take any value between $1$ and $5$ and the function time-dependent
+which can take any value between $1$ and $5$ and the time-dependent
 proportion of treatment effect, $\operatorname{PTE}(t)$, will be estimated. 
 The timepoints at which this function has to be evaluated can be specified through the argument
-`pte.times`. Note that these times should be between $0$ and the maximum
-observed final endpoint times. If one does not want to specify any
+`pte.times`. If one does not want to specify any
 timepoints, the argument `pte.ntimes` can be used instead to specify the
 number of timepoints at which $\operatorname{PTE}(t)$ should be
 evaluated. These points will then be selected evenly on the range of the
@@ -105,15 +104,13 @@ compute quantile-based confidence bands of $\hat{\operatorname{PTE}}(t)$
 using parametric bootstrap. If set to `TRUE`, then the number of
 bootstrap samples to be used can be set with `pte.nboot`.
 
-Other parameters are mainly pertain to computational details. A complete
-description of each parameter can be found in the documentation of the
-package `frailtypack` available on the `CRAN`.
+A complete description of all parameters can be found in the documentation of the
+function in the package.
 
 The function `jointSurroPenal` returns an `R` object of class
 `jointSurroPenal` if the argument `mediation` is set to `FALSE` and of
 class `jointSurroMed` otherwise. In both cases, common `R` functions
-such as `summary`, `print` and `plot` can be used as will be illustrated
-in Section 4.
+such as `summary`, `print` and `plot` can be to display the results.
 
 # Function longiPenal
 
@@ -142,11 +139,11 @@ values given to each parameters are the default values):
 
 This function requires the specification of two datasets. The first one,
 specified through the argument `data`, contains the data regarding the
-final endpoint $T$ such as the follow-up time for each subject, the
-censoring indicator, and potential baseline covariates. Note that this
+final endpoint including the follow-up time for each subject, the
+censoring indicator, and potential covariates. Note that this
 dataset requires one line per subject and therefore does not allow for
 time-dependent covariates to be included. Associated with this dataset
-is the `formula` wich is a formula object, with the response on the left
+is the `formula` object, with the response on the left
 of a $\sim$ operator, and the covariates on the right. The response must
 be a survival object as returned by the `Surv` function of the R
 `survival` package [@survival-package]. The variables used in `formula`
@@ -163,7 +160,7 @@ Both `data` and `data.Longi` should have a column labelled "`id`" that
 corresponds to the identificator of each subject in order to link the
 two datasets, i.e., `id=1` in `data` should corresponds to the same
 individual with `id=1` in `data.Longi`. Note that for simpliciy the
-variable `id` should takes values between $1$ and $n_i$ where $n_i$ is
+variable `id` should takes values between $1$ and $n$ where $n$ is
 the total number of subjects.
 
 The mediation analysis is enabled by setting the argument `mediation` to
@@ -177,9 +174,9 @@ timepoints at which it should be evaluated. The argument `pte.boot`
 takes values `TRUE/FALSE` to indicate if the parametric bootstrap
 estimation of the standard-error of $\hat{\operatorname{PTE}}(t)$ and its
 confidence bands should be computed. If set to `TRUE` then the number of
-bootstrap samples is specified by `pte.nboot` with a default value of
-$2000$. A complete description of each parameter can be found in the
-documentation of the package `frailtypack` available on the `CRAN`.
+bootstrap samples is specified by `pte.nboot`. 
+A complete description of all parameters can be found in the documentation of the
+function in the package.
 
 The function `longiPenal` returns a `R` object of class `longiPenal` on
 which the usual `R` functions `summary`, `print` and `plot` can be
@@ -187,7 +184,7 @@ applied as will be illustrated in Section 4.
 
 # Illustrations
 
-We illustrate the proposed methods in three applications on cancer data
+We illustrate the two functions in two applications on cancer data
 from meta-analyses or multicentric randomized clinical trial. The first
 application is based on a dataset on gastric cancer and the second on
 colorectal cancer. In the following we assume that the `frailtypack`
@@ -196,7 +193,7 @@ package is loaded using the `R` commands `require(frailtypack)` or
 
 ## Time-to-relapse as a surrogate of overall survival using proportion of treatment effect in gastric cancer: a mediation approach
 
-The second application is on a meta-analysis on resectable gastric
+The first application is on a meta-analysis on resectable gastric
 cancer patients investigating the addition of adjuvant chemotherapy
 after surgery versus surgery alone [@paoletti2010benefit]. In this
 illustration, the final endpoint is the time between randomization and
@@ -211,8 +208,7 @@ time-to-relapse.
 
 ### Dataset
 
-As for the first illustration, the dataset `gastadj` can be loaded
-directly from `frailtypack` using the command
+The dataset `gastadj` can be loaded directly from `frailtypack` using the command
 
 ::: small
     R>  data("gastadj")
@@ -293,12 +289,8 @@ The call to the function `jointSurroPenal` is the following:
     +             pte.boot.nmc = 1000)
 :::
 
-In this call we set both `indicator.zeta` and `indicator.alpha` to $0$,
-therefore the parameters $\zeta$ and $\alpha$ are not estimated and assumed to be equal to
-$1$.
-
 Here we specify that `mediation = TRUE`, therefore the function
-$\gamma(S)$  will be estimated using B-Splines. The number of
+$\gamma(S)$  will be estimated. The number of
 inner knots used in the spline basis is fixed to $1$ via the command
 `g.nknots=1`. Since we are interested in the mediation analysis setting,
 we specify that we want the function $\operatorname{PTE}(t)$ to be
@@ -308,7 +300,7 @@ over the random effects is
 set to 10000. The use of parametric bootstrap to derive estimated
 standard-errors and confidence bands for $\operatorname{PTE}(t)$ is
 given by `pte.boot=TRUE` where we also specify that we want this
-bootstrap to be based on $1000$ sampling via `rt.nboot=1000`. Finally,
+bootstrap to be based on $1000$ sampling via `pte.nboot=1000`. Finally,
 for illustration purposes and to reduce computation time, we also set
 the number of Monte Carlo points used for each bootstrap sample to
 $1000$. However, in practice this number should be the same as for the
