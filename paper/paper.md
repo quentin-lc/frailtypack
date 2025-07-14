@@ -6,7 +6,7 @@ tags:
   - Survival analysis
   - Surrogacy
 authors:
-  - name: Quentin Le Coent
+  - name: Quentin LeCoent
     equal-contrib: true
     corresponding: true 
     affiliation: '1'
