@@ -34,7 +34,7 @@ package for investigating surrogate endpoints through mediation analysis.
 A detailed explanation of these functions can be found in the reference manual of
 the package available in R or on the CRAN [@frailtypackcite]. 
 Results in this article were obtained
-using `frailtypack` version 3.6.5 and R version 4.4.0.
+using `frailtypack` version 3.7.0 and R version 4.4.0.
 
 # Function jointSurroPenal
 
